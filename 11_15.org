@@ -1,0 +1,269 @@
+* Racket第二课 -- 12个Racket编程要点（上）
+
+** 要点总览
+
+1. λ-excp （lambda表达式）
+2. INTERNAL DEFINITION （内部定义）
+3. SYMBOLIC TABLE （符号表）
+4. FRIST-CLASS OBJECT （函数属于第一等对象）
+5. DISPATCH FUNCTION （发派函数）
+6. LET SPECIAL FORM (嵌套闭包)
+7. LETREC （相互调用）
+8. NAMED LOOP (尾递归 TAIL-RECURSION)
+9. LIST PROCESS FUNCTIONS （关联列表 alist，链表 assoc）
+10. DATABASE (用派发函数 DISPATCH FUNC 操作数据库)
+11. QUASI-QUOTATION (准引用)
+12. EVALUATOR(REPL) (高阶算子 HIGHER ORDER OPERATOR)
+
+** 1. λ-excp
+
+Lambda表达式缩写为λ，lambda表达式就是一个闭包。
+
+*THUNK* ：我们把lambda表达式没有参数这种情况叫做 THUNK ，译作悟空。
+
+#+BEGIN_SRC racket
+比如函数
+  (λ ()    ;没有参数
+    (* 100 100))
+#+END_SRC
+
+闭包的特性：只有一个口可以进去，参数也通过此传入进去。
+
+表达式参数有三种写法。
+
+- λ (x y) 两个或多个参数
+- λ (x . y) 左边一部分是确定的，如：(x y . z)。后面的会被当做列表
+- λ (x) 参数个数不限，会合并成一个列表传入
+
+示例如下：
+#+BEGIN_SRC racket
+#lang racket
+
+(define f2 (λ (x . y) (displayln x)))
+;结果 1
+(f2 1 2 3 4 5)
+; (1 2 3)
+(f2 '(1 2 3))
+; 1
+(f2 1 2 3)
+
+(define f3 (λ (x . y) (displayln (car y))))
+; 2
+(f3 1 2 3)
+
+(define f4 (λ (x . y) (displayln (cdr y))))
+; (3)
+(f4 1 2 3)
+
+(define f5 (λ (x . y) (displayln (cadr y))))
+; 3
+(f5 1 2 3 4 5)
+
+(define f6 (λ (x . y) (displayln (cddr y))))
+; (4 5)
+(f6 1 2 3 4 5)
+
+(define f7 (λ (x . y) (displayln (car x))))
+; 1
+(f7 '(1 2) 2 3)
+#+END_SRC
+
+** 2. INTERNAL DEFINITION
+
+内部定义相当于在内部定义一个宪法，在外部用不了。
+
+#+BEGIN_SRC racket
+#lang racket
+
+(λ ()
+  (define c (λ (x)
+              (* x x)))
+  c) ；返回内部函数c
+
+(define foo (lambda () (define f (λ (x) (* x x))) f))
+
+((foo) 4)
+#+END_SRC
+
+在lambda里定义函数必须在使用该函数之前。
+
+函数在LISP中是第一等对象，可被直接返回，另外利用 =valus= 可以返回多个。
+
+** 3. SYMBOLIC TABLE
+
+*符号表* 就如同表格，记录每个对象。 *在学习编程语言时一定要建立起符号表的概念，非常重要* 。
+
+在老的LISP里有如下5个字段：
+
+
+| 字段 | 解释                 |
+|--------+------------------------|
+| name   | 名称                 |
+|--------+------------------------|
+| type   | 类型                 |
+|--------+------------------------|
+| value  | 值                    |
+|--------+------------------------|
+| plist  | 有哪些proprity（属性） |
+|--------+------------------------|
+| lambda | λ表达式       |
+
+在后来的 scheme 中，没有了 =plist= 字段，以及 =value= 和 =lamdba= 字段合并在一起。
+
+在LISP有很多谓词（predicator），如： =(number? 100)= 。
+可以用这些谓词查询类型，就是通过查询符号表 /type/ 。
+可以做合同，约定类型，都和字符表有关。
+
+/name/ 和 /lambda/ 是形影关系，绑定（bound）在一起。
+
+=define= 的本质是建立偶对，每次 =define= 都在字符表中插入一条记录，若相同的名称定义了第二次，则会删除原记录，新建一个记录。
+
+LISP中有垃圾回收机制，会回收不用的数据。
+
+符号表是计算机科学的中心数据结构。
+
+** 4. FRIST-CLASS OBJECT
+
+第一等对象指：
+
+- 可以被返回。
+- 可以被传递。
+- 可以被命名，作为一个单独的条目存在符号表中。
+- 可以和其他类型构成数据结构。
+
+LISP中的函数是第一等对象。
+
+** 5. DISPATCH FUNCTION
+
+发派函数的核心思想是： *对外扫相、对内破执* 。
+
+意思是从外部提供相应的符号，拿到闭包内用对于的函数做相应的计算。
+
+这种方式属于数据提供的编程。
+
+
+比如：
+#+BEGIN_SRC racket
+#lang racket
+
+;定义发派函数
+(define foo
+  (λ (s)
+  (define (f1) (displayln 'present-flower))
+  (define (f2) (displayln 'provide-money))
+  (define d (lambda ()
+  (cond
+    [(equal? s 'beautilful) (f1)]
+    [(equal? s 'poor) (f2)])))
+  d))
+
+;使用
+((foo 'poor))
+#+END_SRC
+
+** 6. LET SPECIAL FORM
+
+匿名表达式（anonymous）通过 =define= 操作变成有名函数（named）。
+
+#+BEGIN_SRC racket
+; 例1：匿名表达式
+((λ (x y)
+   (* x y))
+ 100
+ 200)
+
+; 例2：通过let绑定多个对象
+(let ((x 100)
+      (y 200))
+      (* x y))
+
+; 例3：嵌套使用
+(let ((x 100)
+      (y 200))
+  (let ((z 300))
+    (* x y z)))
+
+; 例4：使用let* 互相绑定，则无需嵌套
+(let* ((x 1)
+       (y 2)
+       (z (* x y)))
+  (* x y z))
+#+END_SRC
+
+*注意* ：就如 例3 所示，两个闭包嵌套使用。在外层的闭包只可以使用内层的对象，如例子中的z。
+但是对于处于同一层次的对象 x y 则不能相互调用，如果x的绑定中用到了y则是错误的。
+
+这时可以使用 =let*= 避免嵌套，如 例4 所示，这时一种语法糖（句法糖）。
+
+** 7. LETREC
+
+#+BEGIN_SRC racket
+(define is-even?
+  (λ (x)
+    (if (= x 0)
+        #t
+        (is-odd? (- x 1)))))
+(define is-odd?
+  (λ (x)
+    (if (= x 0)
+        #f
+        (is-even? (- x 1)))))
+
+(is-even? 100)
+(is-even? 101)
+(is-odd? 9)
+#+END_SRC
+
+上例为计算是否为偶数和奇数的两个函数，两个函数有相互调用的关系。
+我们可以不用一个一个定义两个函数，可以结合在一起同时定义。
+
+可以使用 =letrec= ，如下所示：
+#+BEGIN_SRC racket
+(letrec ((is-even?
+          (λ (x)
+            (if (= x 0)
+                #t
+                (is-odd? (- x 1)))))
+         (is-odd?
+          (λ (x)
+            (if (= x 0)
+                #f
+                (is-even? (- x 1))))))
+  (is-even? 100)
+  (is-even? 101))
+#+END_SRC
+
+这里面任意闭包都可以相互调用。
+
+** 8. NAMED LOOP
+
+下例展示一种常规的递归方法。
+#+BEGIN_SRC racket
+; 一种递归 空间效率差
+(define
+  factorial
+  (λ (n)
+    (if (= n 0)
+        1
+        (* n (factorial (- n 1))))))
+
+(factorial 5)
+#+END_SRC
+
+上例中的递归由于需要嵌套的调用函数，虽然逻辑清晰，但是会导致空间效率特别差。
+
+我们可以使用尾递归，在恒定的空间内部运算，没有空间效率损失。
+如下例所示，就是尾递归的写法。
+ 
+使用 =let= 来绑定函数，在内部调用该函数时会回到之前所在位置执行，个人理解类似C语言中的 =goto= 。
+
+#+BEGIN_SRC racket
+;尾递归
+(define fac (λ (n)
+              (let loop ([i n]
+                         [k 1])
+                (if (= i 0)
+                    k
+                    (loop (- i 1) (* i k))))))
+(fac 4)
+#+END_SRC

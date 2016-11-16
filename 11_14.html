@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>11_14</title>
+<!-- 2016-11-14 一 22:48 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="deep" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">11_14</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. 课程简介</a></li>
+<li><a href="#sec-2">2. 第一课 计算的本质 &amp; Racket第一课</a>
+<ul>
+<li><a href="#sec-2-1">2.1. 计算的本质</a>
+<ul>
+<li><a href="#sec-2-1-1">2.1.1. 1 局整关系</a></li>
+<li><a href="#sec-2-1-2">2.1.2. 2 形影关系</a></li>
+<li><a href="#sec-2-1-3">2.1.3. 3 异同关系</a></li>
+<li><a href="#sec-2-1-4">2.1.4. 4 泛序</a></li>
+<li><a href="#sec-2-1-5">2.1.5. 5 泛导</a></li>
+<li><a href="#sec-2-1-6">2.1.6. 6 泛极</a></li>
+<li><a href="#sec-2-1-7">2.1.7. 什么是关系？</a></li>
+<li><a href="#sec-2-1-8">2.1.8. 集合论</a></li>
+<li><a href="#sec-2-1-9">2.1.9. ICBE 理论</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2">2.2. Racket语言</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1. 定义一个函数</a></li>
+<li><a href="#sec-2-2-2">2.2.2. 运算</a></li>
+<li><a href="#sec-2-2-3">2.2.3. 列表</a></li>
+<li><a href="#sec-2-2-4">2.2.4. 函数</a></li>
+<li><a href="#sec-2-2-5">2.2.5. 宏</a></li>
+<li><a href="#sec-2-2-6">2.2.6. 可计算函数构造方法</a></li>
+<li><a href="#sec-2-2-7">2.2.7. 搜索举例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 课程简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+本次人工智能培训班讲课内容分为三大部分。
+</p>
+
+<ol class="org-ol">
+<li>计算的本质
+</li>
+<li>Racket语言
+</li>
+<li>AI方法论
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 第一课 计算的本质 &amp; Racket第一课</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+时间：2016年11月14日
+</p>
+
+<p>
+<b>笔者注</b> ：本课基于离散数学、拓扑学、集合论、范畴学等领域知识归纳演绎得到，知识范围广、体量大，所以笔记中必有很多误解之处，望读者见谅。
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> 计算的本质</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+我们将从数学、哲学、计算机三个角度来分析计算的本质。计算的本质在数学上分为六大关系：
+</p>
+
+<ol class="org-ol">
+<li>局整关系
+</li>
+<li>形影关系
+</li>
+<li>异同关系
+</li>
+<li>范序
+</li>
+<li>泛导
+</li>
+<li>泛极
+</li>
+</ol>
+</div>
+
+<div id="outline-container-sec-2-1-1" class="outline-4">
+<h4 id="sec-2-1-1"><span class="section-number-4">2.1.1</span> 1 局整关系</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+通过集合论来表达关系。B属于A，那么B和A是局整关系。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-2" class="outline-4">
+<h4 id="sec-2-1-2"><span class="section-number-4">2.1.2</span> 2 形影关系</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+指两个事物之间有关系，包括映射等都属于。笛卡尔坐标中(x,y)在X和Y轴的位置是典型的形影关系。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-3" class="outline-4">
+<h4 id="sec-2-1-3"><span class="section-number-4">2.1.3</span> 3 异同关系</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+比如 <i>x ∈ seminar</i> ,这个集合指：屋里的人都属于这个班。屋里的人和屋外的人有本质差异，这里存在隶属关系。
+</p>
+
+<p>
+屋里的人和屋外的人是异同关系，这种 <b>异同关系产生了类型</b> ，屋里的人和屋外的人是不同的类型。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-4" class="outline-4">
+<h4 id="sec-2-1-4"><span class="section-number-4">2.1.4</span> 4 泛序</h4>
+<div class="outline-text-4" id="text-2-1-4">
+<p>
+泛序是指广义的排序。泛序分为三类：
+</p>
+
+<ol class="org-ol">
+<li>偏序
+</li>
+<li>全序
+</li>
+<li>良序
+</li>
+</ol>
+
+<p>
+偏序指：某一部分可以找到某种排序关系。
+</p>
+
+<p>
+全序指：所有元素有序。
+</p>
+
+<p>
+良序指：有序元素的全序集合。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-5" class="outline-4">
+<h4 id="sec-2-1-5"><span class="section-number-4">2.1.5</span> 5 泛导</h4>
+<div class="outline-text-4" id="text-2-1-5">
+<p>
+泛导指广义的导数。广义上两个量在一起做比类叫泛导。泛导是从微积分中推广得到的概念。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-6" class="outline-4">
+<h4 id="sec-2-1-6"><span class="section-number-4">2.1.6</span> 6 泛极</h4>
+<div class="outline-text-4" id="text-2-1-6">
+<p>
+泛极是极限的推广，我们学过的收敛是其中的一种情况。包含以下几种状态：
+</p>
+
+<ul class="org-ul">
+<li>奇 两个量的类型不一样，则不能表达。
+</li>
+<li>混 混沌是一种常态，难以找到答案。
+</li>
+<li>正常 比如：收敛。正指在一定范围内，常指度量、结果是常数。
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-7" class="outline-4">
+<h4 id="sec-2-1-7"><span class="section-number-4">2.1.7</span> 什么是关系？</h4>
+<div class="outline-text-4" id="text-2-1-7">
+<p>
+关系是直积空间（DIRECT PRODUCT）的子集。
+</p>
+
+<p>
+比如： <i>A {a1, a2, a3 &#x2026;}</i> , <i>B {b1, b2, b3 &#x2026;}</i> , <i>A*B</i>
+ 构成的新集合叫直积，如 <i>(a1, b1)</i> 、 <i>(a1, b3)</i> 。
+</p>
+
+<p>
+形影关系、局整关系 =&gt; 通过运筹 =&gt; 得到关系的数学版本。
+</p>
+
+<p>
+有了集合的基本概念，除了直积、还有差集、补集等才能够研究映射关系。
+</p>
+
+<p>
+度量集合可以从以下几点：
+</p>
+
+<ol class="org-ol">
+<li>基数：元素的个数
+</li>
+<li>序数：排序
+</li>
+<li>纲：无穷中有粒度问题，第一纲（自然数），第二纲（连续统），就如连续统比自然数大。
+</li>
+</ol>
+
+<p>
+还有代数系统部分。代数系统研究三元关系，两个元素运算得到一个新的元素。分为：
+</p>
+
+<ul class="org-ul">
+<li>内部运算
+</li>
+<li>外部运算
+</li>
+</ul>
+
+<p>
+比如： <i>3x7=21</i> 产生新的数 21 仍然属于自然数，这叫内部运算。外部运算则产生不属于原集合的数。
+内部运算具有封闭性。从代数系统里研究得到律、环、群等，如：结合律、分配率。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-8" class="outline-4">
+<h4 id="sec-2-1-8"><span class="section-number-4">2.1.8</span> 集合论</h4>
+<div class="outline-text-4" id="text-2-1-8">
+<p>
+集合论内容有：
+</p>
+
+<ul class="org-ul">
+<li>概念
+</li>
+<li>谈论关系和映射
+</li>
+<li>测度、考虑元素基数
+</li>
+<li>考虑排序
+</li>
+<li>格的理论
+</li>
+<li>代数系统
+</li>
+<li>泛序论
+</li>
+</ul>
+
+<p>
+为了描述计算的本质，可转化为八则运算。
+比如：交集是做减法，集合的乘法构造空间，除法：平面-&gt;投影-&gt;分量，并集-&gt;加法，从直积空间分解-&gt;集合。
+</p>
+
+<p>
+利用这种等价关系进行等价聚类。等价关系是指满足：
+</p>
+
+<ol class="org-ol">
+<li>自反关系
+</li>
+<li>反对称
+</li>
+<li>传递性
+</li>
+</ol>
+
+<p>
+这在数学中很重要。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1-9" class="outline-4">
+<h4 id="sec-2-1-9"><span class="section-number-4">2.1.9</span> ICBE 理论</h4>
+<div class="outline-text-4" id="text-2-1-9">
+<p>
+从集合出发可以发展出 <b>ICBE</b> 理论。
+</p>
+
+<ul class="org-ul">
+<li>I：INTER 内部
+</li>
+<li>E：EXTERNAL 外部
+</li>
+<li>C：CLOSURE 导集
+</li>
+<li>B：BOUNDARY 边界
+</li>
+</ul>
+
+<p>
+导集 =&gt; 闭包：无论系统如何扩大都在内部
+</p>
+
+<p>
+哲学有本体论、存在论等。
+</p>
+
+<p>
+在拓扑空间 T 中有几个定理：
+</p>
+
+<ul class="org-ul">
+<li>定理1：空集 ∅ 是一个元素
+</li>
+<li>定理2：A集合视为一个元素
+</li>
+<li>定理3：集合内部空集的点构成的子集是一个元素
+</li>
+<li>定理4： T 与内部子集做加法仍然是 T
+</li>
+</ul>
+
+<p>
+用拓扑学知识来研究数学，前提就是有存在性。
+</p>
+
+<p>
+有存在性，拓扑结构一定有个边界 =&gt; 异同关系。
+边界产生抽象屏障（ABSTRACT BARRIER），比如LAMBDA表达式就是一个闭包，就是一个抽象屏障。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Racket语言</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> 定义一个函数</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+Racket属于LISP的一种实现。在LISP中定义一个函数名 foo ，并使用 lambda 定义一个表达式：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">(lambda ()
+   "HELLO WORLD")
+</pre>
+</div>
+
+<p>
+定义 foo 函数的完整语句如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">(define
+  foo
+    (lambda ()
+    "HELLO WORLD"))
+</pre>
+</div>
+
+<p>
+这实际上就是一个闭包。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> 运算</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+<code>(foo)</code> 把 foo 放入表达式运算
+</p>
+
+<p>
+<code>(lamdba () "Hello world")</code> 结果： <code>“Hello world”</code>
+</p>
+
+<p>
+<code>(lambda display "Hello world")</code> 结果： <code>hello world</code>
+</p>
+
+<p>
+LISP 语言中没有赋值，当语言中有赋值操作就需要关注寄存器的状态。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> 列表</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+LISP 中的列表:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">'(1 2 3 4 5)
+</pre>
+</div>
+
+<p>
+输入'(foo)则会打印'(foo),因为加上'(&#x2026;)则是数据。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-4" class="outline-4">
+<h4 id="sec-2-2-4"><span class="section-number-4">2.2.4</span> 函数</h4>
+<div class="outline-text-4" id="text-2-2-4">
+</div><ol class="org-ol"><li><a id="sec-2-2-4-1" name="sec-2-2-4-1"></a>第一等对象<br  /><div class="outline-text-5" id="text-2-2-4-1">
+<p>
+在LISP中，函数是第一等对象。
+</p>
+
+<p>
+第一等对象指：
+</p>
+
+<ol class="org-ol">
+<li>可以被返回
+</li>
+<li>可以被传递
+</li>
+<li>可以被重命名，被调用。
+</li>
+</ol>
+
+<p>
+比如在C语言中，函数不是第一等对象，因为函数不能被传递，但是函数指针可以。
+</p>
+
+<p>
+函数举例：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">; squre函数
+(define square
+  (λ (x)
+    (* x x)))
+
+; cubic函数
+(define cubic
+  (λ (x)
+    (* (square x) x)))
+
+; c2函数
+(define c2
+  (λ (foo x)
+    (* (foo x) x)))
+
+; 函数可以被返回
+(λ ()
+  (λ ()
+    "Hello world"))
+
+; 该函数构造数据:偶对 '(1.2)
+(cons 1 2)
+
+;结果：'(1 (2.3))
+(cons 1 (cons 2 3))
+</pre>
+</div>
+</div>
+</li>
+
+<li><a id="sec-2-2-4-2" name="sec-2-2-4-2"></a>应用序 正则序<br  /><div class="outline-text-5" id="text-2-2-4-2">
+<ul class="org-ul">
+<li>应用序：如 (Racket)Lisp
+</li>
+<li>正则序：先化简后运算，如：Haskell =&gt; Lasy求值（惰性求值）
+</li>
+</ul>
+</div>
+</li>
+
+
+<li><a id="sec-2-2-4-3" name="sec-2-2-4-3"></a>car cdr<br  /><div class="outline-text-5" id="text-2-2-4-3">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">; 结果 1
+(car '(1.2))
+
+; 结果 2
+(cdr '(1,2))
+</pre>
+</div>
+
+<p>
+car 函数取出第一个数， cdr 函数去除第一个数，取出后面的数。
+</p>
+</div>
+</li>
+
+<li><a id="sec-2-2-4-4" name="sec-2-2-4-4"></a>‘()<br  /><div class="outline-text-5" id="text-2-2-4-4">
+<p>
+'() 代表空表，列表最后一个元素都为空。如：'(1 2 3 4 5 '())。
+</p>
+
+<p>
+'(2 '(3 4) 5) 是嵌套列表。
+</p>
+</div>
+</li></ol>
+</div>
+
+
+
+<div id="outline-container-sec-2-2-5" class="outline-4">
+<h4 id="sec-2-2-5"><span class="section-number-4">2.2.5</span> 宏</h4>
+<div class="outline-text-4" id="text-2-2-5">
+<p>
+LISP可以定义自己的宏（marco），所以适合做DSL（领域专用语言）和编译器。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-6" class="outline-4">
+<h4 id="sec-2-2-6"><span class="section-number-4">2.2.6</span> 可计算函数构造方法</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<ol class="org-ol">
+<li>前继函数
+</li>
+<li>后续函数
+</li>
+<li>测零函数
+</li>
+<li>不动点函数
+</li>
+</ol>
+
+<p>
+从数理逻辑角度程序需要这四类函数。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-7" class="outline-4">
+<h4 id="sec-2-2-7"><span class="section-number-4">2.2.7</span> 搜索举例</h4>
+<div class="outline-text-4" id="text-2-2-7">
+<p>
+列表元素搜索从外到内一层一层找。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">#lang racket
+
+(define search
+  (lambda (l x)
+    (cond
+      [(null? l) 'not_found]
+      [(= x (car l)) 'found]
+      [else (search (cdr l) x)])))
+(search '(1 2 3 4 5))
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: deep</p>
+<p class="date">Created: 2016-11-14 一 22:48</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

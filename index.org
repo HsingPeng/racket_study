@@ -1,0 +1,41 @@
+#+TITLE: Racket培训班（计算的本质 & Racket & 人工智能）
+
+* 学习记录
+
+** 第一天 2016年11月14日
+
+陶琛嵘
+
+- http://www.17beta.com/b/FirstDay_taochenrong.md.htm
+
+何兴鹏
+
+- http://www.17beta.com/b/11_14_hexingpeng.html
+
+郑华利
+
+- http://www.17beta.com/b/Lisp-20161114-zhenghuali.htm
+
+卢晓荣
+
+- http://www.17beta.com/b/racket01_luxiaorong.htm
+
+** 第二天 2016年11月15日
+
+陶琛嵘
+
+- http://www.17beta.com/b/SecondDay_taochenrong.md.htm
+
+何兴鹏
+
+- http://www.17beta.com/b/11_15_hexingpeng.html
+
+郑华利
+
+- http://www.17beta.com/b/lisp_base_zhenghuali.htm
+
+卢晓荣
+
+- http://www.17beta.com/b/racket02_luxiaorong.htm
+
+** 第三天 2016年11月16日
