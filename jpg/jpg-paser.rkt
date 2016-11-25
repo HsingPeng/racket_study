@@ -77,7 +77,7 @@
 (define-syntax markers-handler-get
   (syntax-rules ()
     ((_ marker)
-     (hash-ref markers-handler marker parse-none))))
+     (hash-ref markers-handler marker (λ () parse-none)))))
 
 (define-syntax read-2b
   (syntax-rules ()
@@ -130,21 +130,16 @@
   (define (read-one-frame input frames-hash-table)
     (define frame-value (read-2b input))
     (define frame-marker (markers-get frame-value))
-    (displayln (format "frames ~a" frame-marker))
+    ;(displayln (format "frames ~a" frame-marker))
     (displayln "read-frames...")
     (cond
-      [(eqv? frame-marker #f)
-       frames-hash-table]
-      [(string=? frame-marker "EOI")
-       frames-hash-table]
-      [(eof-object? frame-marker)
+      [(string=? frame-marker "SOS")
+       (displayln "[SOS] frames end")
        frames-hash-table]
       [else
-        ((parse-none input frame-marker frames-hash-table))]))
-;       ((λ ([table (parse-none
-;                     input frame-marker frames-hash-table)])
-  ;          (read-one-frame (markers-get (read-2b input)) input table)))]))
-  (read-one-frame input (make-hash)))
+       (define table (((markers-handler-get "APP0") input frame-marker frames-hash-table)))
+       (read-one-frame input table)]))
+  (read-one-frame input #hash()))
 
 ; unfinish
 (define (read-image input frame-set)
@@ -166,4 +161,7 @@
          (read-image input read-header)
          (void)))))
 
+;(jpeg-paser "OnePlus_IMG_20161121_221417-1.jpg")
+;(jpeg-paser "Meizu_P61124-110200.jpg")
+;(jpeg-paser "Iphone6_3.jpg")
 (jpeg-paser "test1.jpg")
