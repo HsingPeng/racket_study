@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>11_16</title>
+<!-- 2016-11-16 三 22:51 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="deep" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">11_16</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Racket第三课 - 12个Racket编程要点（下）</a>
+<ul>
+<li><a href="#sec-1-1">1.1. 上节课 尾递归 知识更正</a></li>
+<li><a href="#sec-1-2">1.2. 编译原理知识补充</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. 运行时系统</a></li>
+<li><a href="#sec-1-2-2">1.2.2. 堆栈（栈）</a></li>
+<li><a href="#sec-1-2-3">1.2.3. 附加段（堆）</a></li>
+<li><a href="#sec-1-2-4">1.2.4. 栈框</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-3">1.3. 9 LIST PROCESS FUNCTIONS</a></li>
+<li><a href="#sec-1-4">1.4. 10 DATABASE</a>
+<ul>
+<li><a href="#sec-1-4-1">1.4.1. 列表、偶对的结构</a></li>
+</ul>
+</li>
+<li><a href="#sec-1-5">1.5. 11 QUASI-QUOTATION</a></li>
+<li><a href="#sec-1-6">1.6. 12 EVALUATOR(REPL)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Racket第三课 - 12个Racket编程要点（下）</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 上节课 尾递归 知识更正</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+尾递归指一个函数所有递归形式的调用都出现在函数末尾，我们称这种递归为尾递归。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">; 一种递归 空间效率差
+(define
+  factorial
+  (λ (n)
+    (if (= n 0)
+	1
+	(* n (factorial (- n 1))))))
+
+;尾递归
+(define fac (λ (n)
+	      (let loop ([i n]
+			 [k 1])
+		(if (= i 0)
+		    k
+		    (loop (- i 1) (* i k)))))
+</pre>
+</div>
+
+<p>
+可以看到，第一种递归虽然在函数末尾调用，但是在调用中，函数处于运算中。
+在这种情况下编译器不能够进行优化，导致递归仍然需要创建栈帧。
+</p>
+
+<p>
+所以需要以直接调用的形式放在末尾，编译器才能够优化代码，在原有的栈帧空间执行。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 编译原理知识补充</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<b>编译原理</b> 很重要。
+</p>
+
+<p>
+编译原理有 <b>活动记录</b> 的概念，表示一个过程的一次执行所需信息的管理。
+</p>
+
+<p>
+<b>编译</b> 和 <b>解释</b> 都是做翻译。解释是一句一句翻译，但是编译像批处理。
+</p>
+
+<p>
+从数据结构操作的算法来看，编译本质上是对符号表的增删改查的操作。
+</p>
+
+<p>
+C语言和LISP语言不一样，除了语法和编译不同以外，关键是运行时系统不一样。
+</p>
+</div>
+
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 运行时系统</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+在运行时的系统中，程序有两部分：
+</p>
+
+<ul class="org-ul">
+<li>program 程序处理部分 =&gt; CS
+</li>
+<li>data 数据部分 =&gt; DS DI SI
+</li>
+</ul>
+
+<p>
+在运行中，就有代码段和数据段。处理器每次接收一个时钟都向前运行一行代码。
+在X86机器上，有个PC(IP)程序计数器指向代码的位置。
+</p>
+
+<p>
+由程序处理部分引出CS寄存器，代码段地址寄存器。
+</p>
+
+<p>
+由数据部分引出DS数据段段寄存器，DI目的变址寄存器，SI源变址寄存器。
+DS做中转，DI指示写到那里去，SI指示数据从哪读取进来。
+</p>
+
+<p>
+早期的FORTRAN语言只要这几个寄存器就够了。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 堆栈（栈）</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+后来C、ALGOL等引入了堆栈（栈）的思想。
+</p>
+
+<pre class="example">
+|   .    |  &lt;-- SS
+|   .    |
+|        |
+|--------|  &lt;-- BP
+| .....  |
+| .....  |  &lt;-- SP
+| .....  |
+|--------|
+|        |
+|   .    |
+|   .    |
+|        |
+</pre>
+
+<p>
+SS寄存器指向堆栈的起始地址，BP寄存器指向框的起点（栈帧的起点），SP堆栈指针指向所需位置，
+</p>
+
+<p>
+但是堆栈（栈）有个缺点，弹出就没有了，所以引出了堆的概念。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 附加段（堆）</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+堆（HEAP）引出了ES寄存器，用来操作内存空间。
+内存空间可以分为代码段、数据段、堆栈段、附加段三个部分。
+</p>
+
+<p>
+为了更加方便的操作，引出了AX、BX、CX、DX四个通用寄存器。
+</p>
+
+
+<p>
+加上用于存储计算机状态的Flag标志位寄存器，在8086 CPU上一共有14个寄存器。
+</p>
+
+<ul class="org-ul">
+<li>4个数据寄存器(AX、BX、CX和DX)
+</li>
+<li>2个变址和指针寄存器(SI和DI)
+</li>
+<li>2个指针寄存器(SP和BP)
+</li>
+<li>4个段寄存器(CS、SS、DS、ES)
+</li>
+<li>1个指令指针寄存器(IP)
+</li>
+<li>1个标志寄存器(EFlags)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 栈框</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+栈框就是指栈帧，一个函数运行时的栈空间，栈帧也叫过程活动记录。
+</p>
+
+<p>
+ALGOL语言把堆栈分为7个部分。
+</p>
+
+<pre class="example">
+|   .    |
+|   .    |
+|        |
+|--------|
+|  IN    | &lt;- 输入数据
+|--------|
+|  OUT   | &lt;- 输出数据
+|--------|
+| LOCAL  | &lt;- 局部变量
+|--------|
+| TEMP   | &lt;- 中间结果
+|--------|
+| SAVED  | &lt;- 保存的机器状态
+|--------|
+| DATA   | &lt;- 数据链
+|--------|
+| FUNC   | &lt;- 函数（动态）链
+|--------|
+|        |
+|   .    |
+|   .    |
+|        |
+</pre>
+
+<p>
+在C语言里，帧框中没有保留状态部分，没有数据链和函数链。
+</p>
+
+<p>
+在SCHEME语言里，DATA和FUNC合二为一。
+</p>
+
+<p>
+在尾递归中，帧框里的IN、OUT改变，不会增框。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 9 LIST PROCESS FUNCTIONS</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+LIST PROCESS FUNCTIONS 指列表处理函数。
+</p>
+
+<p>
+Racket中有两种非常重要的数据类型，列表和偶对。
+</p>
+
+<p>
+并且在Racket中，有一系列函数用于列表处理。如：
+</p>
+
+<ul class="org-ul">
+<li>car cdar cddar
+</li>
+<li>cdr cadr
+</li>
+</ul>
+
+<p>
+car用于取出列表的第一个元素，cdr用于取出列表中除去第一个元素，后面的元素组成的新列表。
+</p>
+
+<p>
+list函数用于创建列表。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">; '(1 2 3 4 5 6)
+(list 1 2 3 4 5 6)
+</pre>
+</div>
+
+<p>
+cons函数用于创造偶对。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">; '(2 . 3)
+(cons 2 3)
+
+; '(2)
+(cons 2 '())
+
+; '(1 2 3)
+(cons 1 '(2 3))
+</pre>
+</div>
+
+<p>
+一些列表处理函数示例：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">; '(1 2 3 4)
+(append '(1 2) '(3 4))
+
+; '(3 2 1)
+(reverse '(1 2 3))
+</pre>
+</div>
+
+<p>
+列表处理函数的原理都是对符号表进行操作。
+</p>
+
+<p>
+完整的列表处理函数在安装Racket之后可以执行 <code>plt-help</code> 命令打开官方帮助文档查看。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 10 DATABASE</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+这个数据库指在Racket语言编程中，程序运行时，创建数据库。
+</p>
+
+<p>
+在大型软件中，一个系统需要分解成模块来完成，使用模块化思想。这里有：
+</p>
+
+<ul class="org-ul">
+<li>mechanism 机制 
+</li>
+<li>function 功能
+</li>
+</ul>
+
+<p>
+内部的机制和外在的功能一对概念。使用者不需要知道里面的机制，只需要知道功能。
+</p>
+
+<p>
+内部的提供的机制通过数据库的形式组织起来。
+</p>
+
+<p>
+在Racket中，数据库可以看做绑定（bound）的集合。
+</p>
+
+<p>
+列表是最通用的容器，可以放很多的绑定（偶对）。 
+</p>
+
+<p>
+在Racket有专门的列表，叫/alist/ （关联的列表），用来存放一个个偶对。
+如： '((x . 200 (g . 200))) 。
+</p>
+
+<p>
+可以看出来 <i>alist</i> 就是一个数据库。
+</p>
+
+<p>
+可以使用派发函数来操作数据库，五种操作：
+</p>
+
+<ul class="org-ul">
+<li>增 INSERT
+</li>
+<li>删 DELETE
+</li>
+<li>改 MULATE
+</li>
+<li>查 SEARCH
+</li>
+<li>排序 SORT
+</li>
+</ul>
+
+<p>
+有个 <code>assoc</code> 函数可以根据提供的标识符在 <i>alist</i> 中查找偶对。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">(define lst '((x 100) (y 100) (z (lambda () (* 10 10)))))
+; '(x 100)
+(assoc 'x lst)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 列表、偶对的结构</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+在LISP中，列表是偶对的嵌套。
+计算的本质六大关系中的 泛导 -&gt; 偶对，泛极 -&gt; 测零。
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">&gt; (list 1 2 3)
+'(1 2 3)
+&gt; (cons 1 (cons 2 (cons 3 '())))
+'(1 2 3)
+&gt; (cons 1 '(2 3))
+'(1 2 3)
+&gt; (cons 1 (cons 2 3))
+'(1 2 . 3)
+</pre>
+</div>
+
+<p>
+从上面四个语句创建的数据，可以看出来，前三个语句创建的列表完全相同，为 '(1 2 3)。
+</p>
+
+<p>
+我们看一下这个列表 '(1 2 3) 在内存中的结构：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">+---+---+      +---+---+      +---+---+
+|   |   +----&gt; |   |   +----&gt; |   |   +---&gt; '()
++-+-+---+      +-+-+---+      +-+-+---+
+  |              |              |
+  +--&gt; 1         +--&gt; 2         +--&gt; 3
+</pre>
+</div>
+
+<p>
+而最后一个列表 '(1 2 . 3) 在内村中的结构如下：
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-racket">+---+---+      +---+---+
+|   |   +----&gt; |   |   +----&gt; 3
++-+-+---+      +-+-+---+
+  |              |
+  +--&gt; 1         +--&gt; 2
+</pre>
+</div>
+
+<p>
+所以列表是由一个个嵌套的偶对组成的，而最后一个偶对的值是 '() ，可以忽略不写。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 11 QUASI-QUOTATION</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+准引用能够将算式里的值计算后输出，符号 <code>`</code> （ESC下面的按键），区别于单引号 ' 。
+</p>
+
+<p>
+示例：
+</p>
+<div class="org-src-container">
+
+<pre class="src src-racket">; 引用
+'(1 2 3)
+
+; 准引用
+`(1 2 3)
+
+; '(1 3 3)
+`(1 ,(+ 1 2) 3)
+
+; '(1 (2 3) 4)
+`(1 ,(list 2 3) 4)
+
+; '(1 (2 3) (list 4 5))
+`(1 ,(list 2 3) (list 4 5))
+
+; '(1 2 3 (list 4 5))
+`(1 ,@(list 2 3) (list 4 5))
+</pre>
+</div>
+
+<p>
+准引用在宏（marco）中非常有用，用于符号计算。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 12 EVALUATOR(REPL)</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+REPL指：
+</p>
+<ul class="org-ul">
+<li>READ 读取表达式
+</li>
+<li>EVALUATE 对读取的表达式求值
+</li>
+<li>PRINT 把求值的结果打印出来
+</li>
+<li>LOOP 循环
+</li>
+</ul>
+
+<p>
+REPL就是LISP程序的基本流程。
+</p>
+
+<p>
+求值的规则是LISP设计的关键，LISP核心是设计求值器。
+说到求值的规则就回到了六大运算、八大规则。
+</p>
+
+<p>
+求值器设计的核心就是 EVAL 函数： <b>(eval exp env)</b> 。
+</p>
+
+<p>
+表达式的求值一定是在一个环境中，即 env 。
+</p>
+
+<p>
+从哲学上来讲，对事物的评判一定是在一个限定的环境中，这是一个方法论，也是LISP的核心。
+</p>
+
+<p>
+所以首先确定一个环境之后，再对需要的东西进行评估。
+</p>
+
+<p>
+如何评判，首先看类型，比如：数字，偶对等，分类对策。
+</p>
+
+<p>
+BNF范式就是用来定义类型系统的。
+</p>
+
+<p>
+所以，在原有的派发函数基础上要加上一个环境，模型如图：
+</p>
+<pre class="example">
+      eval
++--------------+  &lt;--- 外层环境
+|     env      |
+|   +-----+    |
+|   | exp |    |
+|   +-----+    |
+|    (alist) &lt;-+--- 环境里有alist
++--------------+
+</pre>
+
+<p>
+从闭包的角度，这就是两个闭包的嵌套。
+</p>
+
+<p>
+环境里有个评判尺度，有alist存放数据，有增删改查排序5个操作，有cond函数分类对策，有派发函数来执行操作。
+</p>
+
+<p>
+这就是LISP求值器设计的核心。
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: deep</p>
+<p class="date">Created: 2016-11-16 三 22:51</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

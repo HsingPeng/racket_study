@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>11_18</title>
+<!-- 2016-11-18 五 17:19 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="deep" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">11_18</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Racket 第五课</a>
+<ul>
+<li><a href="#sec-1-1">1.1. 昨日复习</a></li>
+<li><a href="#sec-1-2">1.2. 人工智能导论</a>
+<ul>
+<li><a href="#sec-1-2-1">1.2.1. 一 AI 简介</a></li>
+<li><a href="#sec-1-2-2">1.2.2. 二 AI ETHODOCOGY</a></li>
+<li><a href="#sec-1-2-3">1.2.3. 三 LISP与AI的关系</a></li>
+<li><a href="#sec-1-2-4">1.2.4. 四 CAE STUDIES</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Racket 第五课</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 昨日复习</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+除了前几天学习的内容，还有很多Racket知识没有学习，比如：读写文件、正则表达式、合同等。
+这些知识可以在做小项目中学习。
+</p>
+
+<p>
+首先学习了计算的本质 -&gt; 学习LISP。
+</p>
+
+<ul class="org-ul">
+<li>最初的语言使用 MACHINE CODE ，ASSEMBLY CODE（汇编）
+</li>
+<li>Fortune、C语言引入了函数
+</li>
+<li>C++/JAVA 引入了 TYPE（Class） ，在LISP中引入 CLOSEURE （闭包）
+</li>
+</ul>
+
+<p>
+LISP中 CLOSEURE 就是 lambda表达式（λ-exp），define 绑定 key-value （键值对）,cons 函数创造 PAIR （偶对）。
+通过 alist （属于PROPER LIST）存储多个偶对，可以构成一个数据库，通过assoc函数可以对其进行操作。
+</p>
+
+<p>
+REPL 求值过程中，两个公式：(eval exp env)、(apply proc arg)， apply 用于在求值过程中构造临时表达式。
+</p>
+
+<p>
+三种求值器的变形： STREAM 、 回溯 、 逻辑运算。
+</p>
+
+<p>
+。。。。。。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 人工智能导论</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+人工智能（AI）分为4个部分介绍。
+</p>
+
+<ul class="org-ul">
+<li>AI 简介
+</li>
+<li>AI ETHODOCOGY 人工智能方法论
+</li>
+<li>LISP与AI的关系
+</li>
+<li>AI的方向 CASE STUDIES
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 一 AI 简介</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+人脑中有10的12次方个神经元，而其中的大部分都没有被开发。
+</p>
+
+<p>
+人有八识：
+</p>
+
+<ul class="org-ul">
+<li>五官
+</li>
+<li>六识 由记忆组成
+</li>
+<li>七识 末那（梵语：manas） 比如：一眼认出老朋友，这是一种模式识别。
+</li>
+<li>八识 Alaye 指识之本体，人的潜能，人能调用另一个自己对自己产生认识。
+</li>
+</ul>
+
+<p>
+AI指让计算机模拟人的某方面能力。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 二 AI ETHODOCOGY</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+AI问题解题的方法论，分为三个共同特点：
+</p>
+
+<ul class="org-ul">
+<li>TARGET 问题的目标
+</li>
+<li>STATE 求解的过程、状态的变化、问题的转化
+</li>
+<li>OPERATE 操作
+</li>
+</ul>
+
+<p>
+这三点是解决所有AI问题所共同拥有的方面。
+</p>
+
+<p>
+举个例子：一个老虎妈妈带着两个虎孩子和一个豹子要过河，豹子不能和虎孩子单独待在一起。
+而过河的小船只能坐两只动物，并且只有虎妈妈才能划船，请问，它们该如何过河？
+</p>
+
+<p>
+对于这个问题，就是排列组合（COMRINATION AERMMCATION），尝试找到成功的排列。
+</p>
+
+<p>
+把人工智能可以分为3个层次，最底层是
+</p>
+
+<ul class="org-ul">
+<li>查找与排序 SEARCH &amp; SORT
+</li>
+</ul>
+
+<p>
+但是当基数太大时，要避免组合爆炸。因此组合的复杂度不能是n的阶乘那样，几何增加，可以是n的平方、n的次方。
+</p>
+
+<p>
+查找与排序 中，关键是降低复杂度，对问题空间进行聚类，商化。
+</p>
+
+<p>
+第二层是：
+</p>
+
+<ul class="org-ul">
+<li>建立模式 PATTERN 这是AI的核心。
+</li>
+</ul>
+
+<p>
+最上层就是应用：
+</p>
+
+<ul class="org-ul">
+<li>应用 如：下棋、证明、机器学习、自然语言、图像识别等。
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 三 LISP与AI的关系</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+在 PM 1 2 3 理论中，可以通过集合、图（网）、矩阵来解决问题。
+</p>
+
+<p>
+解决问题的模型如下：
+</p>
+
+<pre class="example">
++-----------+
+|           | &lt;--- 构造解题空间
+|  +-----+  |
+|  |o o o|&lt;-+----- 问题空间
+|  | o o |  |
+|  +-----+  |
+|           |
++-----------+
+</pre>
+
+<p>
+如果用图，则可以把图进行商化，对子问题进行求解。
+商化的子集里是个偏序结构。
+问题组成一个TREE树结构，而TREE是LIST的嵌套，所以用LSIP语言来处理AI问题。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 四 CAE STUDIES</h4>
+<div class="outline-text-4" id="text-1-2-4">
+</div><ol class="org-ol"><li><a id="sec-1-2-4-1" name="sec-1-2-4-1"></a>自然语言处理<br  /><div class="outline-text-5" id="text-1-2-4-1">
+<p>
+对语言的处理不像处理数字那么简单。
+</p>
+
+<p>
+比如： I READ A BOOK ==》 (READ I A.BOOK)
+</p>
+
+<p>
+BOOK还有一些属性，如：
+(BOOK ATTRIBUTES ((LENGTH THICK) (DIFFICUTY DIFF) (TOPIC A)))
+</p>
+
+<p>
+这些属性是内节点。
+</p>
+
+<p>
+如果这本书是我十年前读过的，那么这个描述是外节点：(READ I 10-YEARS-AGO)。
+</p>
+
+<p>
+处理结构如下：
+</p>
+
+<pre class="example">
+        +
+        |
+ +---------------+
+ |      |        |
+ v      v        v
+READ    I    BOOK(...)    &lt;-- 内属性（PROPERTY）
+                 +
+                 |
+          +------+---------+   &lt;-- 外属性（PROPERTY）
+          |      |         |
+          v      v         v
+         READ    I    10-YEARS-AGO
+</pre>
+
+<p>
+老的LISP里面有 PLIST 来存储这些数据，而Racket里面没有 PLIST 取而代之的是 ALIST。
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-4-2" name="sec-1-2-4-2"></a>图像识别 GRAPH RECONGITION<br  /><div class="outline-text-5" id="text-1-2-4-2">
+<p>
+人眼就像两个 SENSORS （传感器），传递 SIGNALS （信号）给大脑。如果是用计算机处理这些信号，需要 A/D 转换。
+</p>
+
+<p>
+比如人识别桌子的边角，大脑里面有对应的模式能够识别。如果用计算机处理，我们需要找到特征值。
+可以把它变成线性代数问题，从而转化问题，解决问题。
+</p>
+</div>
+</li>
+
+<li><a id="sec-1-2-4-3" name="sec-1-2-4-3"></a>机器学习 MACHINE LEARNTING<br  /><div class="outline-text-5" id="text-1-2-4-3">
+<p>
+机器学习就是通过给予样本，让计算机自己学习，从中发现规律。
+</p>
+
+<p>
+这就是一个不断积累的过程，把经验存放在集合里。
+</p>
+</div>
+</li></ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: deep</p>
+<p class="date">Created: 2016-11-18 五 17:19</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
