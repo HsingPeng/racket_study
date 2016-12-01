@@ -10,7 +10,6 @@
 (define (add1)
   (set-field! size hhh (+ 1 (get-field size hhh)))
   (get-field size hhh))
-(define add2 (set-field! size hhh (+ 1 (get-field size hhh))))
 
 (printf "add ~a\n" add)
 (printf "add ~a\n" add)
