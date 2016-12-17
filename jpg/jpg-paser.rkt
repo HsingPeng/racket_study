@@ -5,75 +5,6 @@
 (define LOG-DD-FLAG #t)
 (define LOG-E-FLAG #t)
 
-(define markers (hash
-                 #"\xff\xc0" "SOF0"
-                 #"\xff\xc1" "SOF1"
-                 #"\xff\xc2" "SOF2"
-                 #"\xff\xc3" "SOF3"
-                 #"\xff\xc4" "DHT"
-                 #"\xff\xc5"  "SOF5"
-                 #"\xff\xc6"  "SOF6"
-                 #"\xff\xc7" "SOF7"
-                 #"\xff\xc8" "JPG"
-                 #"\xff\xc9" "SOF9"
-                 #"\xff\xca" "SOF10"
-                 #"\xff\xcb" "SOF11"
-                 #"\xff\xcc" "DAC"
-                 #"\xff\xcd" "SOF13"
-                 #"\xff\xce" "SOF14"
-                 #"\xff\xcf" "SOF15"
-                 #"\xff\xd0" "RST0"
-                 #"\xff\xd1" "RST1"
-                 #"\xff\xd2" "RST2"
-                 #"\xff\xd3" "RST3"
-                 #"\xff\xd4" "RST4"
-                 #"\xff\xd5" "RST5"
-                 #"\xff\xd6" "RST6"
-                 #"\xff\xd7" "RST7"
-                 #"\xff\xd8" "SOI"
-                 #"\xff\xd9" "EOI"
-                 #"\xff\xda" "SOS"
-                 #"\xff\xdb" "DQT"
-                 #"\xff\xdc" "DNL"
-                 #"\xff\xdd" "DRI"
-                 #"\xff\xde" "DHP"
-                 #"\xff\xdf" "EXP"
-                 #"\xff\xe0" "APP0"
-                 #"\xff\xe1" "APP1"
-                 #"\xff\xe2" "APP2"
-                 #"\xff\xe3" "APP3"
-                 #"\xff\xe4" "APP4"
-                 #"\xff\xe5" "APP5"
-                 #"\xff\xe6" "APP6"
-                 #"\xff\xe7" "APP7"
-                 #"\xff\xe8" "APP8"
-                 #"\xff\xe9" "APP9"
-                 #"\xff\xea" "APP10"
-                 #"\xff\xeb" "APP11"
-                 #"\xff\xec" "APP12"
-                 #"\xff\xed" "APP13"
-                 #"\xff\xee"  "APP14"
-                 #"\xff\xef" "APP15"
-                 #"\xff\xf0" "JPG0"
-                 #"\xff\xf1" "JPG1"
-                 #"\xff\xf2" "JPG2"
-                 #"\xff\xf3" "JPG3"
-                 #"\xff\xf4" "JPG4"
-                 #"\xff\xf5" "JPG5"
-                 #"\xff\xf6" "JPG6"
-                 #"\xff\xf7" "JPG7"
-                 #"\xff\xf8" "JPG8"
-                 #"\xff\xf9" "JPG9"
-                 #"\xff\xfa" "JPG10"
-                 #"\xff\xfb" "JPG11"
-                 #"\xff\xfc" "JPG12"
-                 #"\xff\xfd" "JPG13"
-                 #"\xff\xfe" "COM"
-                 #"\xff\x01" "TEM"
-                 #"\xff\x02" "RES1"
-                 #"\xff\xbf" "RES2"))
-
-
 (define-syntax markers-get
   (syntax-rules ()
     ((_ key)
@@ -253,10 +184,65 @@
             frame-marker
             (read-bytes (- length 2) input)))
 
+(define markers (hash
+                 #"\xff\xc0" "SOF0"
+                 #"\xff\xc4" "DHT"
+                 #"\xff\xd8" "SOI"
+                 #"\xff\xd9" "EOI"
+                 #"\xff\xda" "SOS"
+                 #"\xff\xdb" "DQT"
+                 #"\xff\xe0" "APP0"
+                 #"\xff\xe1" "APP1"))
+
 (define markers-handler (hash
                  "DQT"  parse-DQT
                  "DHT"  parse-DHT
                  "SOF0" parse-SOF0))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;(define read-bit
+;  (generator(input)
+;            (void)))
+
+(define (parse-one-unit) (void))
+
+(define (parse-one-mcu) (void))
+
+(define (parse-mcu input comp-info-list frame-set mcu-list)
+  (define (__parse-mcu input comp-info-list frame-set mcu-list)
+    (cond
+      [(eqv? comp-info-list '())
+       mcu-list]
+      [else
+       (define comp-info (car comp-info-list))
+       (define comp-id (car comp-info))
+       (define comp-huffman-id (car (cdr comp-info)))
+;       (define get-comp-frame-info
+;        (begin
+;           (define j-comp (hash-ref frame-set "j-components"))
+;           (for ([i j-comp])
+;             (define component-id (car i))
+;             (define Vmax (cadr i))
+;             (define Hmax (caddr i))
+;             )))
+       (void)]))
+  (void))
+
+(define (read-mcus input comp-info-list frame-set)
+  (define (__read-mcus input comp-info-list frame-set mcu-list)
+    (define new-mcu
+      (parse-mcu input comp-info-list frame-set))
+    (cond
+      [(null? new-mcu)
+       mcu-list]
+      [else
+       (__read-mcus input
+                    comp-info-list
+                    frame-set
+                    (append mcu-list new-mcu))])
+    (__read-mcus input comp-info-list frame-set '()))
+  (void))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -281,8 +267,14 @@
     (define frame-marker (markers-get frame-value))
     (log-d "read-frames...")
     (cond
-      [(string=? frame-marker "SOS")
+      [(and (string? frame-marker) (string=? frame-marker "SOS"))
        (log-d "[SOS] frames end")
+       ;;;;;;;
+       (log-i (format "height: ~a"
+                      (hash-ref frames-hash-table "j-height")))
+       (log-i (format "width: ~a"
+                      (hash-ref frames-hash-table "j-width")))
+       ;;;;;;;
        (log-dd frames-hash-table)]
       [else
        (define table ((markers-handler-get frame-marker)
@@ -296,10 +288,27 @@
 
 ; unfinish
 (define (read-image input frame-set)
-  (define length (integer-btyes->integer (read-2b input) #f #t))
+  (define length (integer-bytes->integer (read-2b input) #f #t))
   (define comp-number
     (integer-bytes->integer (bytes 0 (read-byte input)) #f #t))
-  (define ))
+  (define (__read-comp-info input number comp-info-list)
+    (cond
+      [(eqv? number 0)
+       comp-info-list]
+      [else
+       (define comp-id
+         (integer-bytes->integer (bytes 0 (read-byte input)) #f #t))
+       (define comp-huffman-id
+         (integer-bytes->integer (bytes 0 (read-byte input)) #f #t))
+       (__read-comp-info input
+                         (- number 1)
+                         (append comp-info-list
+                                 (cons comp-id comp-huffman-id)))]))
+  ; '((comp-id . comp-huffman-id) ...)
+  (define comp-info-list (__read-comp-info input 3 '()))
+  (read-bytes 3 input)
+  ;(define mcu-list (read-mcus input comp-info-list frame-set))
+  )
 
 (define (jpeg-paser file-name)
   ; return input port of the jpeg file
@@ -315,13 +324,16 @@
   ; execute and read the image
   ((λ ([input input] [read-header read-header])
      (if read-header
-         (read-image input read-header)
-         (void)))))
+         ;(read-image input read-header)
+         (void)
+         (void)
+         )))
+  )
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;(jpeg-paser "OnePlus_IMG_20161121_221417-1.jpg")
 ;(jpeg-paser "Meizu_P61124-110200.jpg")
 ;(jpeg-paser "Iphone6_3.jpg")
 (jpeg-paser "test3.jpg")
 ;(jpeg-paser "1")
+;(jpeg-paser "OnePlus_IMG_20161121_221417-1.jpg")
